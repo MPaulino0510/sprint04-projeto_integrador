@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>AgriTech - Sementes e Bioinsumos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>AgriTech Solutions</h1>
+    <p>Catálogo de Sementes Modificadas e Insumos Biológicos</p>
+  </header>
+
+  <div class="carousel-container">
+    <button class="btn-prev" id="prevBtn">&#10094;</button>
+    
+    <div class="carousel-track" id="track">
+      <div class="card">
+        <span class="badge">Semente Modificada</span>
+        <h2>Semente Soja Bio-Resistente X1</h2>
+        <p>Alta resistência a estresse hídrico e pragas da lagarta.</p>
+        <p class="preco">R$ 450,00 / saca</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Insumo Biológico</span>
+        <h2>BioInoculante Azospirillum</h2>
+        <p>Fixador biológico de nitrogênio para gramíneas e leguminosas.</p>
+        <p class="preco">R$ 120,00 / litro</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Insumo Biológico</span>
+        <h2>BioDefensivo Trichoderma</h2>
+        <p>Controle biológico eficiente contra fungos de solo.</p>
+        <p class="preco">R$ 85,00 / kg</p>
+      </div>
+    </div>
+
+    <button class="btn-next" id="nextBtn">&#10095;</button>
+  </div>
+
+  <script>
+    const track = document.getElementById('track');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let currentIndex = 0;
+    const totalCards = document.querySelectorAll('.card').length;
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < totalCards - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = totalCards - 1;
+      }
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    });
+  </script>
+
+</body>
+</html>

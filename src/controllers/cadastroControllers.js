@@ -34,13 +34,11 @@ export async function criar(req, res, next) {
             });
         }
 
-        // Valida se o cliente existe no banco de dados
         const clienteExiste = await clienteModel.buscarPorId(id_cliente);
         if (clienteExiste.length === 0) {
             return res.status(400).json({ erro: "O cliente informado não existe" });
         }
 
-        // Valida se o cliente já possui um cadastro (relação 1:1)
         const cadastroExistente = await cadastroModel.buscarPorClienteId(id_cliente);
         if (cadastroExistente.length > 0) {
             return res.status(400).json({ erro: "Este cliente já possui um endereço cadastrado" });

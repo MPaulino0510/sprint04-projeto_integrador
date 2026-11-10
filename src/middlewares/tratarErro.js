@@ -11,7 +11,7 @@ export default function tratarErro(erro, req, res, next) {
 
     // Cadastro/edição com uma chave estrangeira inexistente.
     if (erro.code === "ER_NO_REFERENCED_ROW_2" || erro.errno === 1452) {
-        return res.status(400).json({ erro: "O estudio informado não existe" });
+        return res.status(400).json({ erro: "O cliente informado não existe" });
     }
 
     // Exclusão de um registro que ainda possui dependentes.

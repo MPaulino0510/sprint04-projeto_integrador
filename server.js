@@ -27,6 +27,7 @@ app.use("/compra", compraRoute);
 app.use("/venda", vendaRoute);
 app.use("/consulta", consultaRoute);
 app.use("/notafiscal", notaFiscalRoute);
+
 app.use((req, res) => {
     res.status(404).json({ erro: "Rota não encontrada" });
 });

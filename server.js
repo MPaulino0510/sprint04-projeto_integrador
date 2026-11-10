@@ -4,6 +4,7 @@ import cors from "cors";
 import db from "./db.js";
 import clienteRoute from "./src/routes/clienteRoutes.js";
 import loginRoute from "./src/routes/loginRoute.js"
+import cadastroRoute from "./src/routes/cadastroRoute.js"
 import tratarErro from "./src/middlewares/tratarErro.js";
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use("/cliente", clienteRoute);
 app.use("/login", loginRoute);
+app.use("/cadastro", cadastroRoute);
 
 app.use((req, res) => {
     res.status(404).json({ erro: "Rota não encontrada" });

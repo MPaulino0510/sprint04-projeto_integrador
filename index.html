@@ -42,31 +42,35 @@
   </div>
 
   <script>
-    const track = document.getElementById('track');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+  const track = document.getElementById('track');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
 
-    let currentIndex = 0;
-    const totalCards = document.querySelectorAll('.card').length;
+  let currentIndex = 0;
+  const totalCards = document.querySelectorAll('.card').length;
 
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < totalCards - 1) {
-        currentIndex++;
-      } else {
-        currentIndex = 0;
-      }
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    });
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
 
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-      } else {
-        currentIndex = totalCards - 1;
-      }
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    });
-  </script>
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < totalCards - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0;
+    }
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = totalCards - 1; 
+    }
+    updateCarousel();
+  });
+</script>
 
 </body>
 </html>

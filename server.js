@@ -27,7 +27,6 @@ app.post('/api/login', async (req, res) => {
       mensagem: 'Login realizado com sucesso!',
       usuario: rows[0]
     });
-
   } catch (error) {
     console.error('Erro no login:', error);
     return res.status(500).json({ mensagem: 'Erro interno no servidor.' });
@@ -38,18 +37,9 @@ app.get('/api/usuarios', async (req, res) => {
   try {
     const [rows] = await db.query(
       `SELECT 
-        c.id_cliente, 
-        c.nome, 
-        c.cpf_cnpj, 
-        c.telefone, 
-        c.tipo_cultura, 
-        l.id_login, 
-        l.email, 
-        cad.id_cadastro, 
-        cad.endereco, 
-        cad.cidade, 
-        cad.cep, 
-        cad.complemento
+        c.id_cliente, c.nome, c.cpf_cnpj, c.telefone, c.tipo_cultura, 
+        l.id_login, l.email, 
+        cad.id_cadastro, cad.endereco, cad.cidade, cad.cep, cad.complemento
       FROM cliente c
       INNER JOIN login l ON c.id_cliente = l.id_cliente
       LEFT JOIN cadastro cad ON c.id_cliente = cad.id_cliente`
@@ -67,16 +57,8 @@ app.get('/api/usuarios', async (req, res) => {
 
 app.post('/api/usuarios', async (req, res) => {
   const { 
-    nome, 
-    cpf_cnpj, 
-    telefone, 
-    tipo_cultura, 
-    email, 
-    senha,
-    endereco,
-    cidade,
-    cep,
-    complemento
+    nome, cpf_cnpj, telefone, tipo_cultura, email, senha,
+    endereco, cidade, cep, complemento
   } = req.body;
 
   if (!nome || !cpf_cnpj || !telefone || !email || !senha) {
@@ -85,30 +67,24 @@ app.post('/api/usuarios', async (req, res) => {
     });
   }
 
-  const connection = await db.getConnection();
-
   try {
-    await connection.beginTransaction();
-
-    const [resultCliente] = await connection.query(
+    const [resultCliente] = await db.query(
       'INSERT INTO cliente (nome, cpf_cnpj, telefone, tipo_cultura) VALUES (?, ?, ?, ?)',
       [nome, cpf_cnpj, telefone, tipo_cultura || 'Geral']
     );
     const id_cliente = resultCliente.insertId;
 
-    const [resultLogin] = await connection.query(
+    const [resultLogin] = await db.query(
       'INSERT INTO login (email, senha, id_cliente) VALUES (?, ?, ?)',
       [email, senha, id_cliente]
     );
 
     if (endereco && cidade && cep) {
-      await connection.query(
+      await db.query(
         'INSERT INTO cadastro (endereco, cidade, cep, complemento, id_cliente) VALUES (?, ?, ?, ?, ?)',
         [endereco, cidade, cep, complemento || null, id_cliente]
       );
     }
-
-    await connection.commit();
 
     return res.status(201).json({
       mensagem: 'Usuário cadastrado com sucesso!',
@@ -124,16 +100,8 @@ app.post('/api/usuarios', async (req, res) => {
     });
 
   } catch (error) {
-    await connection.rollback();
     console.error('Erro ao cadastrar usuário:', error);
-
-    if (error.code === 'ER_DUP_ENTRY') {
-      return res.status(409).json({ mensagem: 'CPF/CNPJ ou E-mail já cadastrados.' });
-    }
-
-    return res.status(500).json({ mensagem: 'Erro interno ao cadastrar usuário.' });
-  } finally {
-    connection.release();
+    return res.status(500).json({ mensagem: 'Erro ao cadastrar usuário.' });
   }
 });
 

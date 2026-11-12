@@ -19,6 +19,10 @@ const PORTA = Number(process.env.PORTA || 3000);
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.status(200).json({ mensagem: "API do AgriTech funcionando!" });
+});
+
 app.use("/cliente", clienteRoute);
 app.use("/login", loginRoute);
 app.use("/endereco", enderecoRoute);
@@ -42,3 +46,8 @@ servidor.on("error", (erro) => {
     console.error("Erro ao iniciar servidor:", erro.code || erro.message);
     if (db.end) db.end(() => process.exit(1));
 });
+
+/*lembretes:
+o preço está em string, mudar para decimal
+erro no registro de endereço
+*/

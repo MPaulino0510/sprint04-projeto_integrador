@@ -27,12 +27,14 @@ export async function buscarPorId(req, res, next) {
 export async function criar(req, res, next) {
     try {
         const { email, senha, id_cliente } = req.body ?? {};
-
+        
         if (!textoValido(email, 100) || !textoValido(senha, 100) || !id_cliente) {
             return res.status(400).json({ 
                 erro: "Informe email (até 100 caracteres), senha (até 100 caracteres) e id_cliente obrigatoriamente." 
             });
         }
+
+        const validacao = RegExp.test
 
         // Ver função utilizando o regex
         //
@@ -40,8 +42,8 @@ export async function criar(req, res, next) {
         // 
 
         
-        if(email.includes){
-            
+        if(validacao = false){
+
         }
 
         //

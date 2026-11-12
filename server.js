@@ -4,7 +4,7 @@ import cors from "cors";
 import db from "./db.js";
 import clienteRoute from "./src/routes/clienteRoutes.js";
 import loginRoute from "./src/routes/loginRoute.js";
-import cadastroRoute from "./src/routes/cadastroRoute.js";
+import enderecoRoute from "./src/routes/enderecoRoute.js";
 import carrinhoRoute from "./src/routes/carrinho_de_compraRoute.js";
 import compraRoute from "./src/routes/compraRoute.js";
 import vendaRoute from "./src/routes/vendaRoute.js";
@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.use("/cliente", clienteRoute);
 app.use("/login", loginRoute);
-app.use("/cadastro", cadastroRoute);
+app.use("/endereco", enderecoRoute);
 app.use("/carrinho", carrinhoRoute);
 app.use("/compra", compraRoute);
 app.use("/venda", vendaRoute);

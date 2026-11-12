@@ -1,0 +1,22 @@
+info:
+  name: put_carrinho
+  type: http
+
+http:
+  method: PUT
+  url: http://localhost:3000/carrinho/5
+  body:
+    type: json
+    data: |-
+      {
+          "status_carrinho": "Fechado",
+          "data_criacao": "2026-11-18",
+          "id_cliente": 2
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

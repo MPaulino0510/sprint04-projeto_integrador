@@ -1,0 +1,22 @@
+info:
+  name: put_notafiscal
+  type: http
+
+http:
+  method: PUT
+  url: http://localhost:3000/notafiscal/4
+  body:
+    type: json
+    data: |-
+      {
+          "numero_nf": "NF-2026-0049",
+          "chave_acesso": "35261112345678000199550010002030011234567890",
+          "id_venda": 3
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

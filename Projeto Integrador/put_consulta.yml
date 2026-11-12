@@ -1,0 +1,22 @@
+info:
+  name: put_consulta
+  type: http
+
+http:
+  method: PUT
+  url: http://localhost:3000/consulta/2
+  body:
+    type: json
+    data: |-
+      {
+          "descricao_tecnica": "Pergunta de teste editada?",
+          "status_consulta": "Atendido",
+          "id_cliente": 3
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

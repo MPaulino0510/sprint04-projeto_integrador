@@ -50,4 +50,5 @@ servidor.on("error", (erro) => {
 /*lembretes:
 o preço está em string, mudar para decimal
 erro no registro de endereço
+erro na edição da compra
 */

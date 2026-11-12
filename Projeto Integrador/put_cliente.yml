@@ -1,0 +1,23 @@
+info:
+  name: put_cliente
+  type: http
+
+http:
+  method: PUT
+  url: http://localhost:3000/cliente/9
+  body:
+    type: json
+    data: |-
+      {
+          "nome": "Fazendinha teste",
+          "cpf_cnpj": "12.345.678/2001-90",
+          "telefone": "19993998888",
+          "tipo_cultura": "Soja e trigo"
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import db from "./db.js";
+import db from "./config/db.js";
 import clienteRoute from "./src/routes/clienteRoutes.js";
 import loginRoute from "./src/routes/loginRoute.js";
 import enderecoRoute from "./src/routes/enderecoRoute.js";

@@ -34,13 +34,15 @@ export async function criar(req, res, next) {
             });
         }
 
+        // Ver função utilizando o regex
         //
         //
-        //
-        //
+        // 
 
         
-        if(email.includes)
+        if(email.includes){
+            
+        }
 
         //
         //
@@ -109,4 +111,3 @@ export async function excluir(req, res, next) {
         return next(erro);
     }
 }
-

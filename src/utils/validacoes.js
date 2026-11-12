@@ -9,3 +9,12 @@ export function inteiroPositivo(valor) {
         && Number.isSafeInteger(valor)
         && valor > 0;
 }
+
+export function validacaoEmail(email){
+    const regexEmail = /^[^\s@]+@(gmail|hotmail|outlook|yahoo)\.com(\.br)?$/i;
+
+    if (!regexEmail.test(email)){
+        return false;
+    }
+    return true;
+}

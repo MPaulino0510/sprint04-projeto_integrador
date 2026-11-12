@@ -33,6 +33,20 @@ export async function criar(req, res, next) {
                 erro: "Informe email (até 100 caracteres), senha (até 100 caracteres) e id_cliente obrigatoriamente." 
             });
         }
+
+        //
+        //
+        //
+        //
+
+        
+        if(email.includes)
+
+        //
+        //
+        //
+        //
+
         const clienteExiste = await clienteModel.buscarPorId(id_cliente);
         if (clienteExiste.length === 0) {
             return res.status(400).json({ erro: "O cliente informado não existe" });
@@ -95,3 +109,4 @@ export async function excluir(req, res, next) {
         return next(erro);
     }
 }
+

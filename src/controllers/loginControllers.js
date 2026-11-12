@@ -42,9 +42,9 @@ export async function criar(req, res, next) {
         // 
 
         
-        if(validacao = false){
+        // if(validacao = false){
 
-        }
+        // }
 
         //
         //

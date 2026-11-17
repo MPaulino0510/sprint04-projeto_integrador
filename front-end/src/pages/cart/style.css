@@ -5,6 +5,7 @@
     --middle-green: #388e3c;
     --shadow: rgba(0, 0, 0, 0.25);
     --dark-green2: rgba(46, 77, 46, 0.15);
+    --red: #c62828;
 }
 
 * {
@@ -74,10 +75,14 @@ body {
 
 .vazio {
     background-color: var(--white);
-    padding: 28px;
+    padding: 32px 28px;
     border-radius: 12px;
     text-align: center;
     font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .item-card {
@@ -85,17 +90,17 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    background-color: #ffffff;
+    background-color: var(--white);
     padding: 18px 20px;
     border-radius: 12px;
-    border: 2px solid rgba(46, 77, 46, 0.12);
+    border: 2px solid var(--dark-green2);
     transition: transform 0.25s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .item-card:hover {
     transform: translateY(-3px);
     border-color: var(--light-green);
-    box-shadow: 0 6px 16px rgba(46, 77, 46, 0.15);
+    box-shadow: 0 6px 16px var(--dark-green2);
 }
 
 .item-info {
@@ -105,7 +110,7 @@ body {
 }
 
 .categoria {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--middle-green);
@@ -124,7 +129,7 @@ body {
 .item-controles {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 1rem;
 }
 
 .qtd-box {
@@ -142,7 +147,7 @@ body {
     border: none;
     border-radius: 6px;
     background-color: var(--light-green);
-    color: #ffffff;
+    color: var(--white);
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.25s ease, transform 0.2s ease;
@@ -161,8 +166,8 @@ body {
 
 .btn-remover {
     background: transparent;
-    border: 1px solid #c62828;
-    color: #c62828;
+    border: 1px solid var(--red);
+    color: var(--red);
     padding: 6px 10px;
     border-radius: 6px;
     font-size: 0.85rem;
@@ -172,26 +177,26 @@ body {
 }
 
 .btn-remover:hover {
-    background-color: #c62828;
-    color: #ffffff;
+    background-color: var(--red);
+    color: var(--white);
     transform: translateY(-2px);
 }
 
 /* Resumo lateral */
 .resumo-pedido {
-    background-color: #ffffff;
+    background-color: var(--white);
     padding: 24px;
     border-radius: 12px;
-    border: 2px solid rgba(46, 77, 46, 0.15);
+    border: 2px solid var(--dark-green2);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1rem;
 }
 
 .resumo-pedido h2 {
     font-size: 1.25rem;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(46, 77, 46, 0.15);
+    border-bottom: 1px solid var(--dark-green2);
 }
 
 .linha-resumo {
@@ -204,7 +209,7 @@ body {
 .linha-resumo.total {
     font-size: 1.2rem;
     padding-top: 10px;
-    border-top: 1px solid rgba(46, 77, 46, 0.15);
+    border-top: 1px solid var(--dark-green2);
 }
 
 .campo {
@@ -221,7 +226,7 @@ label {
 select {
     padding: 10px 12px;
     border-radius: 8px;
-    border: 2px solid rgba(46, 77, 46, 0.25);
+    border: 2px solid var(--dark-green2);
     color: var(--dark-green);
     font-size: 0.95rem;
     outline: none;
@@ -248,14 +253,14 @@ select:focus {
 
 .botao-principal {
     background-color: var(--light-green);
-    color: #ffffff;
+    color: var(--white);
     border: none;
 }
 
 .botao-principal:hover {
     background-color: var(--middle-green);
     transform: translateY(-3px);
-    box-shadow: 0 6px 14px rgba(46, 77, 46, 0.3);
+    box-shadow: 0 6px 14px var(--dark-green2);
 }
 
 .botao-principal:disabled {

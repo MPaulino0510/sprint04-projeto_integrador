@@ -227,7 +227,12 @@ btnFinalizar.addEventListener("click", async () => {
 
 async function iniciar() {
     if (!idCliente) {
-        mensagem.textContent = "Faça login para acessar seu carrinho de compras.";
+        listaItens.innerHTML = `
+            <div class="vazio">
+                <p>Faça login para acessar seu carrinho de compras.</p>
+                <a href="../login/login.html" class="botao-principal">Ir para o Login</a>
+            </div>
+        `;
         btnFinalizar.disabled = true;
         return;
     }

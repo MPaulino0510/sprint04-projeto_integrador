@@ -124,3 +124,19 @@ header {
   background-color: #388e3c;
   transform: translateY(-2px);
 }
+
+.produto{
+  display: block;
+  width: 100%;
+  max-width: 360px;      
+  height: 504px;          
+  object-fit: cover;      
+  margin: 15px auto;     
+  border-radius: 6px;
+  border: 1px solid #c8e6c9;
+  transition: transform 0.3s ease;
+}
+
+.produto:hover {
+  transform: scale(1.04); 
+}

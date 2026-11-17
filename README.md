@@ -1,1 +1,3 @@
-"# sprint04-projeto_integrador" 
+# Projeto integrador
+
+### Alterações recentes que não incluem o front-end

@@ -46,9 +46,3 @@ servidor.on("error", (erro) => {
     console.error("Erro ao iniciar servidor:", erro.code || erro.message);
     if (db.end) db.end(() => process.exit(1));
 });
-
-/*lembretes:
-o preço está em string, mudar para decimal
-erro no registro de endereço (post)
-erro na edição da compra (put)
-*/

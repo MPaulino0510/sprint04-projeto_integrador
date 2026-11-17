@@ -27,8 +27,9 @@ export async function buscarPorId(req, res, next) {
 export async function criar(req, res, next) {
     try {
         const {cidade, cep, complemento, id_cliente, estado, bairro, numero, logradouro} = req.body ?? {};
+        const numEndereco = Number(numero);
 
-        if (!textoValido(cidade, 50) || !textoValido(cep, 9) || !id_cliente || !textoValido(estado, 2) || !textoValido(bairro, 100) || !textoValido(numero, 20) || !textoValido(logradouro, 150) ) {
+        if (!textoValido(cidade, 50) || !textoValido(cep, 9) || !id_cliente || !textoValido(estado, 2) || !textoValido(bairro, 100) || isNaN(numEndereco) || numEndereco <= 0 || !textoValido(logradouro, 150) ) {
             return res.status(400).json({ 
                erro: "Informe cidade, cep, complemento, id_cliente, estado, bairro, numero, logradouro" 
             });
@@ -51,7 +52,7 @@ export async function criar(req, res, next) {
             id_cliente: Number(id_cliente),
             estado: estado.trim(),
             bairro: bairro.trim(),
-            numero: numero.trim(),
+            numero: numEndereco,
             logradouro: logradouro.trim()
         };
 
@@ -69,8 +70,9 @@ export async function atualizar(req, res, next) {
     try {
         const id = req.params.id;
         const {cidade, cep, complemento, id_cliente, estado, bairro, numero, logradouro} = req.body ?? {};
+        const numEndereco = Number(numero);
 
-        if (!textoValido(cidade, 50) || !textoValido(cep, 9) || !id_cliente || !textoValido(estado, 2) || !textoValido(bairro, 100) || !textoValido(numero, 20) || !textoValido(logradouro, 150) ) {
+        if (!textoValido(cidade, 50) || !textoValido(cep, 9) || !id_cliente || !textoValido(estado, 2) || !textoValido(bairro, 100) || isNaN(numEndereco) || numEndereco <= 0 || !textoValido(logradouro, 150) ) {
             return res.status(400).json({ 
                 erro: "Informe cidade, cep, complemento, id_cliente, estado, bairro, numero, logradouro" 
             });
@@ -88,7 +90,7 @@ export async function atualizar(req, res, next) {
             id_cliente: Number(id_cliente),
             estado: estado.trim(),
             bairro: bairro.trim(),
-            numero: numero.trim(),
+            numero: numEndereco,
             logradouro: logradouro.trim()
         };
 

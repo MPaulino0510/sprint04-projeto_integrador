@@ -19,7 +19,7 @@ export async function criar(dados) {
 
 export async function atualizar(id, dados) {
     const sql = "UPDATE compra SET nome_produto =?, categoria =?, quantidade =?, preco_unitario =?, id_carrinho =? WHERE id_compra = ?";
-    const valores = [dados.nome_produto, dados.categoria, dados.quantidade, dados.preco_unitario, dados.id_compra, id];
+    const valores = [dados.nome_produto, dados.categoria, dados.quantidade, dados.preco_unitario, dados.id_carrinho, id];
     const [resultado] = await db.query(sql, valores);
     return resultado;
 }

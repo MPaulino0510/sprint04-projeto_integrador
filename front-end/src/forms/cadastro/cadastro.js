@@ -13,6 +13,13 @@ const campoTelefone = document.getElementById("telefone");
 const campoTipoCultura = document.getElementById("tipo_cultura");
 const campoEmail = document.getElementById("email");
 const campoSenha = document.getElementById("senha");
+const btnToggleSenha = document.getElementById("btnToggleSenha");
+
+btnToggleSenha.addEventListener("click", () => {
+    const isPassword = campoSenha.type === "password";
+    campoSenha.type = isPassword ? "text" : "password";
+});
+
 
 formulario.addEventListener("submit", async (evento) => {
     evento.preventDefault();

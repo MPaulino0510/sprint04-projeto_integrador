@@ -133,10 +133,28 @@ header {
   object-fit: cover;      
   margin: 15px auto;     
   border-radius: 6px;
-  border: 1px solid #c8e6c9;
+  border: none;
   transition: transform 0.3s ease;
 }
 
 .produto:hover {
   transform: scale(1.04); 
+}
+
+.btn-add {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-add:hover {
+  background-color: #388e3c;
+  transform: translateY(-2px);
 }

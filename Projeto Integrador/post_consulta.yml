@@ -1,0 +1,22 @@
+info:
+  name: post_consulta
+  type: http
+
+http:
+  method: POST
+  url: http://localhost:3000/consulta
+  body:
+    type: json
+    data: |-
+      {
+          "descricao_tecnica": "Pergunta de teste?",
+          "status_consulta": "Atendido",
+          "id_cliente": 3
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

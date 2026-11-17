@@ -1,12 +1,17 @@
 import db from "../../config/db.js";
 
 export async function listar() {
-    const [linhas] = await db.query("SELECT * FROM login");
+    const [linhas] = await db.query("SELECT id_login, email, id_cliente FROM login");
     return linhas;
 }
 
 export async function buscarPorId(id) {
-    const [linhas] = await db.query("SELECT * FROM login WHERE id_login = ?", [id]);
+    const [linhas] = await db.query("SELECT id_login, email, id_cliente FROM login WHERE id_login = ?", [id]);
+    return linhas;
+}
+
+export async function buscarPorEmail(email) {
+    const [linhas] = await db.query("SELECT * FROM login WHERE email = ?", [email]);
     return linhas;
 }
 

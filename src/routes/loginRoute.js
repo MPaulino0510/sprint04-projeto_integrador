@@ -1,17 +1,16 @@
 import { Router } from "express";
 import * as loginControllers from "../controllers/loginControllers.js";
 import validarId from "../middlewares/validarId.js";
+import { autenticarToken } from "../middlewares/autenticarToken.js";
 
 const router = Router();
 
-router.get("/", loginControllers.listar);
-
-router.get("/:id", validarId, loginControllers.buscarPorId);
-
 router.post("/", loginControllers.criar);
+router.post("/entrar", loginControllers.autenticar);
 
-router.put("/:id", validarId, loginControllers.atualizar);
-
-router.delete("/:id", validarId, loginControllers.excluir);
+router.get("/", autenticarToken, loginControllers.listar);
+router.get("/:id", autenticarToken, validarId, loginControllers.buscarPorId);
+router.put("/:id", autenticarToken, validarId, loginControllers.atualizar);
+router.delete("/:id", autenticarToken, validarId, loginControllers.excluir);
 
 export default router;

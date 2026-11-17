@@ -8,6 +8,41 @@
     <title>Carrinho de compras</title>
 </head>
 <body>
-    
+    <main class="container">
+        <header class="topo-carrinho">
+            <h1>Meu Carrinho</h1>
+            <a href="../landing/landing.html" class="botao secundario">Continuar comprando</a>
+        </header>
+
+        <section class="conteudo-carrinho">
+            <div id="listaItens" class="lista-itens"></div>
+            <aside class="resumo-pedido">
+                <h2>Resumo do Pedido</h2>
+
+                <div class="linha-resumo">
+                    <span>Quantidade de itens:</span>
+                    <strong id="totalItens">0</strong>
+                </div>
+
+                <div class="linha-resumo total">
+                    <span>Total:</span>
+                    <strong id="valorTotal">R$ 0,00</strong>
+                </div>
+
+                <div class="campo">
+                    <label for="forma_pagamento">Forma de pagamento</label>
+                    <select id="forma_pagamento" required>
+                        <option value="PIX">PIX</option>
+                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                        <option value="Boleto Bancário">Boleto Bancário</option>
+                    </select>
+                </div>
+                <button type="button" id="btnFinalizar" class="botao-principal">
+                    Finalizar compra
+                </button>
+            </aside>
+        </section>
+        <p id="mensagem" role="status"></p>
+    </main>
 </body>
 </html>

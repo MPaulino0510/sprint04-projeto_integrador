@@ -1,6 +1,6 @@
 import * as clienteModel from "../models/clienteModel.js"
 import * as loginModel from "../models/loginModel.js";
-import { textoValido } from "../utils/validacoes.js";
+import { textoValido, validacaoEmail } from "../utils/validacoes.js";
 
 export async function listar(req, res, next) {
     try {
@@ -34,22 +34,11 @@ export async function criar(req, res, next) {
             });
         }
 
-        const validacao = RegExp.test
-
-        // Ver função utilizando o regex
-        //
-        //
-        // 
-
-        
-        // if(validacao = false){
-
-        // }
-
-        //
-        //
-        //
-        //
+        if(validacaoEmail(email) === false){
+            return res.status(400).json({
+                erro: "Informe o email corretamente."
+            })
+        }
 
         const clienteExiste = await clienteModel.buscarPorId(id_cliente);
         if (clienteExiste.length === 0) {
@@ -81,6 +70,11 @@ export async function atualizar(req, res, next) {
             return res.status(400).json({ 
                 erro: "Informe email (até 100 caracteres), senha (até 100 caracteres) e id_cliente." 
             });
+        }
+        if(validacaoEmail(email) === false){
+            return res.status(400).json({
+                erro: "Informe o email corretamente."
+            })
         }
 
         const dados = { 

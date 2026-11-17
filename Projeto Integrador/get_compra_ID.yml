@@ -1,0 +1,14 @@
+info:
+  name: get_compra_ID
+  type: http
+
+http:
+  method: GET
+  url: http://localhost:3000/compra/3
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

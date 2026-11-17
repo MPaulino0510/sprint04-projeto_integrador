@@ -1,0 +1,22 @@
+info:
+  name: put_login
+  type: http
+
+http:
+  method: PUT
+  url: http://localhost:3000/login/10
+  body:
+    type: json
+    data: |-
+      {
+          "email": "catapimbas@agrotech.com",
+          "senha": "senhaSegura123485",
+          "id_cliente": 9
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

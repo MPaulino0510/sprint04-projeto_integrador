@@ -11,7 +11,6 @@ form.addEventListener("submit", async (evento) => {
   const senha = document.getElementById("senha").value;
 
   try {
-    // Passo 1: Cadastra o cliente e pega o ID gerado pelo banco
     const respCliente = await fetch("http://localhost:3000/cliente", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -32,7 +31,6 @@ form.addEventListener("submit", async (evento) => {
 
     const novoIdCliente = dadosCliente.id;
 
-    // Passo 2: Cria o login vinculado automaticamente ao novo ID
     const respLogin = await fetch("http://localhost:3000/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f4;
+  margin: 0;
+  padding: 20px;
+  color: #2e4d2e;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 30px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: bold;
+}
+
+.preco {
+  font-size: 1.4em;
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+.btn-prev, .btn-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #4caf50;
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-prev { left: 10px; }
+.btn-next { right: 10px; }
+
+.btn-prev:hover, .btn-next:hover {
+  background: #388e3c;
+}

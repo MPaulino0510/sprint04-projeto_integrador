@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `carrinho_de_compra` (
   PRIMARY KEY (`id_carrinho`),
   KEY `fk_carrinho_cliente` (`id_cliente`),
   CONSTRAINT `fk_carrinho_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `tipo_cultura` varchar(50) DEFAULT 'Geral',
   PRIMARY KEY (`id_cliente`),
   UNIQUE KEY `cpf_cnpj` (`cpf_cnpj`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `compra` (
   PRIMARY KEY (`id_compra`),
   KEY `fk_compra_carrinho` (`id_carrinho`),
   CONSTRAINT `fk_compra_carrinho` FOREIGN KEY (`id_carrinho`) REFERENCES `carrinho_de_compra` (`id_carrinho`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -90,13 +90,13 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 CREATE TABLE IF NOT EXISTS `login` (
   `id_login` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(100) NOT NULL,
-  `senha` varchar(100) NOT NULL,
+  `senha` varchar(255) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   PRIMARY KEY (`id_login`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `id_cliente` (`id_cliente`),
   CONSTRAINT `fk_login_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `venda` (
   PRIMARY KEY (`id_venda`),
   KEY `fk_venda_carrinho` (`id_carrinho`),
   CONSTRAINT `fk_venda_carrinho` FOREIGN KEY (`id_carrinho`) REFERENCES `carrinho_de_compra` (`id_carrinho`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Exportação de dados foi desmarcado.
 

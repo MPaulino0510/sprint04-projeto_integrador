@@ -259,3 +259,7 @@ body {
     font-size: 2.1rem;
   }
 }
+#btn-sair:hover{
+  background-color: rgb(194, 44, 74);
+  color:#e8f5e9
+}

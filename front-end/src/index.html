@@ -13,23 +13,23 @@
   <span class="logo">AgriTech Solutions</span>
   <div class="nav-botoes">
     <a href="./pages/landing/landing.html" class="btn-nav secundario">Ver Produtos</a>
-    <a href="./pages/login/login.html" class="btn-nav primario">Fazer Login</a>
+    <a href="./pages/login/login.html" class="btn-nav primario apenas-deslogado">Fazer Login</a>
     <button id="btn-ir-painel" type="button" class="btn-nav secundario">Meu Painel</button>
     <button id="btn-sair" type="button" class="btn-nav secundario">Sair</button>
   </div>
 </nav>
 
   <header class="parallax parallax-hero">
-    <div class="parallax-conteudo">
-      <h1>AgriTech Solutions</h1>
-      <p>Catálogo de Sementes Modificadas e Insumos Biológicos de Alta Performance</p>
-      
-      <div class="hero-acoes">
-        <a href="./pages/landing/landing.html" class="btn-cta primario">Explorar Produtos</a>
-        <a href="./pages/login/login.html" class="btn-cta secundario">Entrar na Conta</a>
-      </div>
+  <div class="parallax-conteudo">
+    <h1>AgriTech Solutions</h1>
+    <p>Catálogo de Sementes Modificadas e Insumos Biológicos de Alta Performance</p>
+    
+    <div class="hero-acoes">
+      <a href="./pages/landing/landing.html" class="btn-cta primario">Explorar Produtos</a>
+      <a href="./pages/login/login.html" class="btn-cta secundario apenas-deslogado">Entrar na Conta</a>
     </div>
-  </header>
+  </div>
+</header>
 
   <section class="secao-solida">
     <h2 class="titulo-secao">Destaques do Nosso Catálogo</h2>
@@ -68,13 +68,13 @@
     </div>
   </section>
 
-  <section class="parallax parallax-campo">
-    <div class="parallax-conteudo">
-      <h2>Biotecnologia Sustentável para a Sua Lavoura</h2>
-      <p>Acesse sua conta para gerenciar pedidos, consultar especialistas e acompanhar entregas.</p>
-      <a href="./pages/login/login.html" class="btn-cta primario">Acessar Área do Cliente</a>
-    </div>
-  </section>
+ <section class="parallax parallax-campo">
+  <div class="parallax-conteudo">
+    <h2>Biotecnologia Sustentável para a Sua Lavoura</h2>
+    <p>Acesse sua conta para gerenciar pedidos, consultar especialistas e acompanhar entregas.</p>
+    <a href="./pages/consulta/consulta.html" class="btn-cta primario">Acessar Área do Cliente</a>
+  </div>
+</section>
 
   <script>
     const track = document.getElementById('track');
@@ -106,5 +106,7 @@
       updateCarousel();
     });
   </script>
+
+
 </body>
 </html>

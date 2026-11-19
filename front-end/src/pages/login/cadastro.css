@@ -29,6 +29,7 @@
 body {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -36,30 +37,33 @@ body {
     color: var(--dark-green);
 }
 
-.container {
+h2 {
     width: 100%;
     max-width: 720px;
     background-color: var(--white);
-    padding: 36px 40px;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px var(--shadow);
+    padding: 36px 40px 16px 40px;
+    border-radius: 16px 16px 0 0;
+    text-align: center;
+    color: var(--dark-green);
+    font-size: 1.8rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
     animation: surgirSuave 0.6s ease-out forwards;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: var(--dark-green);
-    font-size: 1.8rem;
-}
-
-#formCadastro {
+#form-cadastro {
+    width: 100%;
+    max-width: 720px;
+    background-color: var(--white);
+    padding: 10px 40px 36px 40px;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 12px 30px var(--shadow);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px 24px;
+    animation: surgirSuave 0.6s ease-out forwards;
 }
 
-.campo {
+#form-cadastro > div {
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -79,6 +83,7 @@ input {
     background-color: var(--white);
     color: var(--dark-green);
     font-size: 1rem;
+    outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
@@ -93,32 +98,21 @@ input:focus {
     transform: translateY(-2px);
 }
 
-.acoes {
+button[type="submit"] {
     grid-column: 1 / -1;
-    display: flex;
-    gap: 1rem;
     margin-top: 0.7rem;
-}
-
-button,
-.botao {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 12px 20px;
     border-radius: 8px;
     font-size: 1rem;
-    font-weight: 530;
-    text-decoration: none;
+    font-weight: 600;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-button[type="submit"] {
     background-color: var(--light-green);
     color: var(--white);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 button[type="submit"]:hover {
@@ -137,39 +131,34 @@ button:disabled {
     transform: none;
 }
 
-.botao.secundario {
-    background-color: transparent;
-    border-color: var(--dark-green);
-    color: var(--dark-green);
-}
-
-.botao.secundario:hover {
-    background-color: var(--dark-green);
-    color: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 14px var(--dark-green2);
-}
-
-#mensagem {
-    margin-top: 18px;
+.link-cadastro {
+    grid-column: 1 / -1;
     text-align: center;
-    font-weight: 500;
-    font-size: 1rem;
+    margin-top: 4px;
+    font-size: 0.95rem;
     color: var(--dark-green);
-    min-height: 20px;
+}
+
+.link-cadastro a {
+    color: var(--middle-green);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.link-cadastro a:hover {
+    color: var(--dark-green);
+    text-decoration: underline;
 }
 
 @media (max-width: 600px) {
-    .container {
-        padding: 25px 20px;
+    h2 {
+        padding: 25px 20px 12px 20px;
     }
 
-    #formCadastro {
+    #form-cadastro {
+        padding: 10px 20px 25px 20px;
         grid-template-columns: 1fr;
-    }
-
-    .acoes {
-        flex-direction: column;
     }
 }
 
@@ -181,13 +170,15 @@ button:disabled {
 }
 
 .input-senha-wrapper input {
-    padding-right: 3rem;
+    width: 100%;
+    padding-right: 2.8rem;
 }
 
 .btn-olho {
     position: absolute;
     right: 10px;
-    flex: none;
+    top: 50%;
+    transform: translateY(-50%);
     width: auto;
     padding: 4px;
     background: transparent;
@@ -200,13 +191,14 @@ button:disabled {
     transition: color 0.3s ease, transform 0.2s ease;
 }
 
+.input-senha-wrapper:hover .btn-olho,
+.input-senha-wrapper:focus-within .btn-olho {
+    transform: translateY(calc(-50% - 2px));
+}
+
 .btn-olho:hover {
     color: var(--light-green);
     background: transparent;
     box-shadow: none;
-    transform: scale(1.1);
-}
-
-.input-senha-wrapper:hover .btn-olho {
-    transform: translateY(-2px);
+    transform: translateY(calc(-50% - 2px)) scale(1.1);
 }

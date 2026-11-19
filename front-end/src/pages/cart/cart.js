@@ -1,8 +1,7 @@
-console.log("cart.js funcionando!");
-
 const API_CARRINHO = "http://localhost:3000/carrinho";
 const API_COMPRA = "http://localhost:3000/compra";
 const API_VENDA = "http://localhost:3000/venda";
+const API_ENDERECO = "http://localhost:3000/endereco";
 
 const listaItens = document.getElementById("listaItens");
 const totalItensEl = document.getElementById("totalItens");
@@ -11,16 +10,157 @@ const campoPagamento = document.getElementById("forma_pagamento");
 const btnFinalizar = document.getElementById("btnFinalizar");
 const mensagem = document.getElementById("mensagem");
 
+const campoCep = document.getElementById("cep");
+const statusCep = document.getElementById("statusCep");
+const campoEstado = document.getElementById("estado");
+const campoLogradouro = document.getElementById("logradouro");
+const campoNumero = document.getElementById("numero");
+const campoComplemento = document.getElementById("complemento");
+const campoBairro = document.getElementById("bairro");
+const campoCidade = document.getElementById("cidade");
+
 const idCliente = Number(localStorage.getItem("id_cliente"));
 
 let carrinhoAtual = null;
 let itensDoCarrinho = [];
+let idEnderecoAtual = null;
 
 function formatarMoeda(valor) {
     return Number(valor).toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL"
     });
+}
+
+function aplicarMascaraCep(valor) {
+    const apenasNumeros = valor.replace(/\D/g, "").slice(0, 8);
+    if (apenasNumeros.length > 5) {
+        return `${apenasNumeros.slice(0, 5)}-${apenasNumeros.slice(5)}`;
+    }
+    return apenasNumeros;
+}
+
+async function buscarCep(cepDigitado) {
+    const cepLimpo = cepDigitado.replace(/\D/g, "");
+    if (cepLimpo.length !== 8) return;
+
+    try {
+        statusCep.textContent = "Buscando CEP...";
+        const resp = await fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`);
+        const dados = await resp.json();
+
+        if (dados.erro) {
+            statusCep.textContent = "CEP não encontrado. Preencha manualmente.";
+            return;
+        }
+
+        campoLogradouro.value = dados.logradouro || "";
+        campoBairro.value = dados.bairro || "";
+        campoCidade.value = dados.localidade || "";
+        campoEstado.value = (dados.uf || "").toUpperCase();
+        statusCep.textContent = "Endereço encontrado!";
+
+        campoNumero.focus();
+    } catch (erro) {
+        statusCep.textContent = "Não foi possível consultar o CEP.";
+    }
+}
+
+campoCep.addEventListener("input", (e) => {
+    e.target.value = aplicarMascaraCep(e.target.value);
+    const cepLimpo = e.target.value.replace(/\D/g, "");
+    if (cepLimpo.length === 8) {
+        buscarCep(cepLimpo);
+    } else {
+        statusCep.textContent = "";
+    }
+});
+
+campoEstado.addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/[^a-zA-Z]/g, "").toUpperCase().slice(0, 2);
+});
+
+async function carregarEnderecoCliente() {
+    try {
+        const resp = await fetch(API_ENDERECO);
+        if (!resp.ok) return;
+
+        const enderecos = await resp.json();
+        const enderecoCliente = enderecos.find((e) => e.id_cliente === idCliente);
+
+        if (enderecoCliente) {
+            idEnderecoAtual = enderecoCliente.id_endereco;
+            campoCep.value = aplicarMascaraCep(enderecoCliente.cep || "");
+            campoEstado.value = (enderecoCliente.estado || "").toUpperCase();
+            campoLogradouro.value = enderecoCliente.logradouro || "";
+            campoNumero.value = enderecoCliente.numero || "";
+            campoComplemento.value = enderecoCliente.complemento || "";
+            campoBairro.value = enderecoCliente.bairro || "";
+            campoCidade.value = enderecoCliente.cidade || "";
+        }
+    } catch (erro) {
+        console.error("Erro ao buscar endereço do cliente:", erro);
+    }
+}
+
+function validarESalvarDadosEndereco() {
+    const cep = aplicarMascaraCep(campoCep.value.trim());
+    const estado = campoEstado.value.trim().toUpperCase();
+    const logradouro = campoLogradouro.value.trim();
+    const numero = Number(campoNumero.value);
+    const complemento = campoComplemento.value.trim();
+    const bairro = campoBairro.value.trim();
+    const cidade = campoCidade.value.trim();
+
+    if (cep.replace(/\D/g, "").length !== 8) {
+        throw new Error("Informe um CEP válido com 8 dígitos.");
+    }
+    if (!logradouro) {
+        throw new Error("Informe o logradouro (rua/avenida) para entrega.");
+    }
+    if (isNaN(numero) || numero <= 0) {
+        throw new Error("Informe um número de endereço válido (maior que 0).");
+    }
+    if (!bairro) {
+        throw new Error("Informe o bairro para entrega.");
+    }
+    if (!cidade) {
+        throw new Error("Informe a cidade para entrega.");
+    }
+    if (estado.length !== 2) {
+        throw new Error("Informe a sigla do estado (UF) com 2 letras.");
+    }
+
+    return {
+        cep,
+        estado,
+        logradouro,
+        numero,
+        complemento: complemento || null,
+        bairro,
+        cidade,
+        id_cliente: idCliente
+    };
+}
+
+async function salvarOuAtualizarEndereco(dadosEndereco) {
+    const url = idEnderecoAtual ? `${API_ENDERECO}/${idEnderecoAtual}` : API_ENDERECO;
+    const metodo = idEnderecoAtual ? "PUT" : "POST";
+
+    const resp = await fetch(url, {
+        method: metodo,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosEndereco)
+    });
+
+    const dados = await resp.json();
+    if (!resp.ok) {
+        throw new Error(dados.erro || "Erro ao salvar o endereço de entrega.");
+    }
+
+    if (!idEnderecoAtual && dados.id) {
+        idEnderecoAtual = dados.id;
+    }
 }
 
 async function obterOuCriarCarrinho() {
@@ -182,9 +322,15 @@ btnFinalizar.addEventListener("click", async () => {
     );
 
     try {
-        btnFinalizar.disabled = true;
-        mensagem.textContent = "Finalizando pedido...";
+        const dadosEndereco = validarESalvarDadosEndereco();
 
+        btnFinalizar.disabled = true;
+        mensagem.textContent = "Salvando endereço e finalizando pedido...";
+
+        // 1. Salva ou atualiza o endereço do cliente
+        await salvarOuAtualizarEndereco(dadosEndereco);
+
+        // 2. Registra a venda
         const respVenda = await fetch(API_VENDA, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -202,6 +348,7 @@ btnFinalizar.addEventListener("click", async () => {
             throw new Error(dadosVenda.erro || "Erro ao registrar a venda.");
         }
 
+        // 3. Finaliza o carrinho atual
         const respCarrinho = await fetch(`${API_CARRINHO}/${carrinhoAtual.id_carrinho}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -217,7 +364,7 @@ btnFinalizar.addEventListener("click", async () => {
 
         mensagem.textContent = "Compra realizada com sucesso! Redirecionando...";
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "../../index.html";
         }, 1800);
     } catch (erro) {
         mensagem.textContent = erro.message;
@@ -239,7 +386,7 @@ async function iniciar() {
 
     try {
         carrinhoAtual = await obterOuCriarCarrinho();
-        await carregarItens();
+        await Promise.all([carregarItens(), carregarEnderecoCliente()]);
     } catch (erro) {
         mensagem.textContent = erro.message;
     }

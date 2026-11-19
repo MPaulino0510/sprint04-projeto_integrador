@@ -3,9 +3,9 @@
   --dark-green: #2e4d2e;
   --light-green: #4caf50;
   --middle-green: #388e3c;
-  --dark-green2: rgba(46, 77, 46, 0.96);
-  --shadow: rgba(0, 0, 0, 0.2);
-  --dark-green3:rgba(28, 52, 28, 0.72);
+  --shadow: rgba(0, 0, 0, 0.25);
+  --dark-green2: rgba(46, 77, 46, 0.3);
+  --dark-green3: rgba(28, 52, 28, 0.7);
 }
 
 * {
@@ -32,9 +32,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 16px 40px;
-  background-color: var(--dark-green2);
+  background-color: var(--dark-green3);
   backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px var(--shadow)
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
 .logo {
@@ -80,7 +80,7 @@ body {
   background-color: var(--middle-green);
   border-color: var(--middle-green);
   transform: translateY(-3px);
-  box-shadow: 0 6px 16px vr(--shadow);
+  box-shadow: 0 6px 16px var(--shadow);
 }
 
 .secundario {
@@ -102,7 +102,7 @@ body {
   align-items: center;
   text-align: center;
   color: var(--white);
-  background-attachment: fixed; 
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -110,14 +110,14 @@ body {
 }
 
 .parallax-hero {
-  min-height: 82vh;
+  min-height: 85vh;
   background-image: linear-gradient(var(--dark-green3), var(--dark-green2)),
     url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80");
 }
 
 .parallax-campo {
   min-height: 55vh;
-  background-image: linear-gradient(var(--dark-green2), var(--dark-green3)),
+  background-image: linear-gradient(var(--dark-green3), var(--dark-green2)),
     url("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80");
 }
 
@@ -153,95 +153,61 @@ body {
 }
 
 .secao-solida {
-  padding: 70px 20px;
+  padding: 80px 20px;
   background-color: var(--white);
+}
+
+.conteudo-central {
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .titulo-secao {
   text-align: center;
   font-size: 1.9rem;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   color: var(--dark-green);
 }
 
-.carousel-container {
-  position: relative;
-  max-width: 640px;
-  margin: 0 auto;
-  overflow: hidden;
-  border: 2px solid var(--light-green);
+.grid-diferenciais {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card-info {
+  background-color: var(--white);
+  padding: 32px 26px;
   border-radius: 12px;
-  background: var(--white);
-  box-shadow: 0 10px 25px var(--dark-green2);
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.35s ease-in-out;
-}
-
-.card {
-  min-width: 100%;
-  padding: 40px 55px;
-  text-align: center;
+  border: 2px solid var(--dark-green2);
+  box-shadow: 0 8px 20px var(--dark-green3);
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.badge {
-  display: inline-block;
-  background-color: var(--white);
+.card-info:hover {
+  transform: translateY(-5px);
+  border-color: var(--light-green);
+  box-shadow: 0 12px 24px var(--dark-green2);
+}
+
+.card-info h3 {
+  font-size: 1.25rem;
+  color: var(--middle-green);
+}
+
+.card-info p {
+  font-size: 0.98rem;
+  line-height: 1.6;
   color: var(--dark-green);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.85em;
-  font-weight: bold;
-}
-
-.preco {
-  font-size: 1.4em;
-  color: var(--dark-green);
-  font-weight: bold;
-}
-
-.btn-prev,
-.btn-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--light-green);
-  color: var(--white);
-  border: none;
-  font-size: 18px;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-  z-index: 10;
-}
-
-.btn-prev { left: 12px; }
-.btn-next { right: 12px; }
-
-.btn-prev:hover,
-.btn-next:hover {
-  background: var(--middle-green);
 }
 
 .centro-botao {
   display: flex;
   justify-content: center;
-  margin-top: 32px;
-}
-
-.rodape {
-  background-color: var(--dark-green);
-  color: var(--white);
-  text-align: center;
-  padding: 22px 20px;
-  font-size: 0.9rem;
+  margin-top: 40px;
 }
 
 @media (max-width: 768px) {

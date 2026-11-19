@@ -1,6 +1,7 @@
 const API_CARRINHO = "http://localhost:3000/carrinho";
 const API_COMPRA = "http://localhost:3000/compra";
 
+const track = document.getElementById("track");
 const itensCarrossel = document.querySelectorAll("#track > .card");
 const btnEsquerda = document.getElementById("prevBtn");
 const btnDireita = document.getElementById("nextBtn");
@@ -12,19 +13,33 @@ const idCliente = Number(localStorage.getItem("id_cliente"));
 let indiceAtual = 0;
 let temporizador;
 
+function getCardsVisiveis() {
+  if (window.innerWidth <= 600) return 1;
+  if (window.innerWidth <= 900) return 2;
+  return 3;
+}
+
 function atualizarCarrossel() {
-  itensCarrossel.forEach((item, index) => {
-    if (index === indiceAtual) {
-      item.classList.add("ativa");
-    } else {
-      item.classList.remove("ativa");
-    }
-  });
+  if (!track || itensCarrossel.length === 0) return;
+
+  const visiveis = getCardsVisiveis();
+  const maxIndice = Math.max(0, itensCarrossel.length - visiveis);
+
+  if (indiceAtual > maxIndice) indiceAtual = 0;
+  if (indiceAtual < 0) indiceAtual = maxIndice;
+
+  const cardWidth = itensCarrossel[0].getBoundingClientRect().width;
+  const gap = 20; // Mesmo valor do gap definido no CSS
+  const deslocamento = indiceAtual * (cardWidth + gap);
+
+  track.style.transform = `translateX(-${deslocamento}px)`;
 }
 
 function proximoCard() {
-  indiceAtual++;
-  if (indiceAtual >= itensCarrossel.length) {
+  const visiveis = getCardsVisiveis();
+  if (indiceAtual < itensCarrossel.length - visiveis) {
+    indiceAtual++;
+  } else {
     indiceAtual = 0;
   }
   atualizarCarrossel();
@@ -32,9 +47,11 @@ function proximoCard() {
 }
 
 function cardAnterior() {
-  indiceAtual--;
-  if (indiceAtual < 0) {
-    indiceAtual = itensCarrossel.length - 1;
+  const visiveis = getCardsVisiveis();
+  if (indiceAtual > 0) {
+    indiceAtual--;
+  } else {
+    indiceAtual = Math.max(0, itensCarrossel.length - visiveis);
   }
   atualizarCarrossel();
   reiniciarTemporizador();
@@ -47,6 +64,7 @@ function reiniciarTemporizador() {
 
 btnDireita.addEventListener("click", proximoCard);
 btnEsquerda.addEventListener("click", cardAnterior);
+window.addEventListener("resize", atualizarCarrossel);
 
 atualizarCarrossel();
 reiniciarTemporizador();

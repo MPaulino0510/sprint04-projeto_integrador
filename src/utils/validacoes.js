@@ -10,11 +10,8 @@ export function inteiroPositivo(valor) {
         && valor > 0;
 }
 
-export function validacaoEmail(email){
-    const regexEmail = /^[^\s@]+@(gmail|hotmail|outlook|yahoo)\.com(\.br)?$/i;
-
-    if (!regexEmail.test(email)){
-        return false;
-    }
-    return true;
+export function validacaoEmail(email) {
+    if (typeof email !== "string") return false;
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regexEmail.test(email.trim());
 }

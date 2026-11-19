@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import db from "./db.js";
+import db from "./config/db.js";
 import clienteRoute from "./src/routes/clienteRoutes.js";
 import loginRoute from "./src/routes/loginRoute.js";
 import enderecoRoute from "./src/routes/enderecoRoute.js";
@@ -46,8 +46,3 @@ servidor.on("error", (erro) => {
     console.error("Erro ao iniciar servidor:", erro.code || erro.message);
     if (db.end) db.end(() => process.exit(1));
 });
-
-/*lembretes:
-o preço está em string, mudar para decimal
-erro no registro de endereço
-*/

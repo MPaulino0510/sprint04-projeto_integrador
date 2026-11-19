@@ -1,0 +1,27 @@
+info:
+  name: put_endereco
+  type: http
+
+http:
+  method: PUT
+  url: http://localhost:3000/endereco/3
+  body:
+    type: json
+    data: |-
+      {
+          "cidade": "São Bernardo dos Campos",
+          "cep": "01310-100",
+          "complemento": null,
+          "id_cliente": 2,
+          "estado": "SP",
+          "bairro": "Bela Vista",
+          "numero": "1578",
+          "logradouro": "Avenida Paulista"
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

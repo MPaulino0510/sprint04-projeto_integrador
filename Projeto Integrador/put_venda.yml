@@ -1,0 +1,25 @@
+info:
+  name: put_venda
+  type: http
+
+http:
+  method: PUT
+  url: http://localhost:3000/venda/3
+  body:
+    type: json
+    data: |2-
+       {
+          "data_venda": "2026-11-16",
+          "valor_total": "1238.52",
+          "forma_pagamento": "Cartão de Crédito",
+          "status_pagamento": "Aprovado",
+          "status_entrega": "Enviado",
+          "id_carrinho": 5
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

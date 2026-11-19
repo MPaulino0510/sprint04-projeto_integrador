@@ -91,26 +91,9 @@ button[type="submit"]:hover {
   text-decoration: underline;
 }
 
-.link-cadastro {
-  width: 100%;
-  text-align: center;
-  margin-top: 16px;
-  font-size: 0.9em;
-}
-
-.link-cadastro a {
-  color: #1b5e20;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.link-cadastro a:hover {
-  text-decoration: underline;
-}
-
 #form-cadastro {
   width: 100%;
-  max-width: 480px; /* Um pouco mais largo que o login, sem ficar esticado demais */
+  max-width: 480px; 
   background: #ffffff;
   border: 2px solid #4caf50;
   border-radius: 8px;

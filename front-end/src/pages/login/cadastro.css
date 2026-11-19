@@ -161,3 +161,44 @@ button:disabled {
         grid-template-columns: 1fr;
     }
 }
+
+.input-senha-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-senha-wrapper input {
+    width: 100%;
+    padding-right: 2.8rem;
+}
+
+.btn-olho {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 4px;
+    background: transparent;
+    border: none;
+    color: var(--dark-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.input-senha-wrapper:hover .btn-olho,
+.input-senha-wrapper:focus-within .btn-olho {
+    transform: translateY(calc(-50% - 2px));
+}
+
+.btn-olho:hover {
+    color: var(--light-green);
+    background: transparent;
+    box-shadow: none;
+    transform: translateY(calc(-50% - 2px)) scale(1.1);
+}

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Criar Conta - AgriTech</title>
   <link rel="stylesheet" href="cadastro.css">
 </head>
+
 <body>
 
   <h2>Criar Conta</h2>
@@ -37,7 +39,16 @@
 
     <div>
       <label for="senha">Senha:</label>
-      <input type="password" id="senha" maxlength="100" required placeholder="Crie uma senha">
+      <div class="input-senha-wrapper">
+        <input type="password" id="senha" required minlength="6" maxlength="100" placeholder="Mínimo 6 caracteres">
+        <button type="button" id="btnToggleSenha" class="btn-olho" aria-label="Mostrar ou ocultar senha">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <button type="submit">Cadastrar</button>
@@ -50,4 +61,5 @@
   <script src="cadastro.js"></script>
 
 </body>
+
 </html>

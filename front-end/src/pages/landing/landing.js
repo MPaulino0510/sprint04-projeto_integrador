@@ -51,7 +51,6 @@ btnEsquerda.addEventListener("click", cardAnterior);
 atualizarCarrossel();
 reiniciarTemporizador();
 
-// Busca o carrinho "Aberto" do cliente ou cria um novo no banco
 async function obterOuCriarCarrinho() {
   const resposta = await fetch(API_CARRINHO);
   if (!resposta.ok) {
@@ -88,7 +87,6 @@ async function obterOuCriarCarrinho() {
   };
 }
 
-// Atualiza o número de itens no topo buscando do banco de dados
 async function atualizarContador() {
   if (!contadorCarrinho || !idCliente) return;
 
@@ -117,12 +115,11 @@ async function atualizarContador() {
   }
 }
 
-// Adiciona ou incrementa o produto na tabela 'compra' do banco
 botoesAdicionar.forEach((botao) => {
   botao.addEventListener("click", async () => {
     if (!idCliente) {
       alert("Faça login antes de adicionar produtos ao carrinho.");
-      window.location.href = "../index.html";
+      window.location.href = "../../index.html";
       return;
     }
 

@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <nav class="navbar">
     <span class="logo">AgriTech Solutions</span>
     <div class="nav-botoes">
@@ -16,11 +15,10 @@
       <a href="./pages/login/login.html" class="btn-nav primario">Fazer Login</a>
     </div>
   </nav>
-
   <header class="parallax parallax-hero">
     <div class="parallax-conteudo">
       <h1>AgriTech Solutions</h1>
-      <p>Catálogo de Sementes Modificadas e Insumos Biológicos de Alta Performance</p>
+      <p>Sementes Modificadas e Insumos Biológicos de Alta Performance para o Campo</p>
       
       <div class="hero-acoes">
         <a href="./pages/landing/landing.html" class="btn-cta primario">Explorar Produtos</a>
@@ -28,41 +26,30 @@
       </div>
     </div>
   </header>
-
   <section class="secao-solida">
-    <h2 class="titulo-secao">Destaques do Nosso Catálogo</h2>
+    <div class="conteudo-central">
+      <h2 class="titulo-secao">Nossas Soluções para o Agronegócio</h2>
 
-    <div class="carousel-container">
-      <button class="btn-prev" id="prevBtn">&#10094;</button>
-      
-      <div class="carousel-track" id="track">
-        <div class="card">
-          <span class="badge">Semente Modificada</span>
-          <h2>Semente Soja Bio-Resistente X1</h2>
-          <p>Alta resistência a estresse hídrico e pragas da lagarta.</p>
-          <p class="preco">R$ 450,00 / saca</p>
-        </div>
+      <div class="grid-diferenciais">
+        <article class="card-info">
+          <h3>Sementes Modificadas</h3>
+          <p>Cultivares desenvolvidas para máxima produtividade, tolerância a estresse hídrico e resistência a pragas.</p>
+        </article>
 
-        <div class="card">
-          <span class="badge">Insumo Biológico</span>
-          <h2>BioInoculante Azospirillum</h2>
-          <p>Fixador biológico de nitrogênio para gramíneas e leguminosas.</p>
-          <p class="preco">R$ 120,00 / litro</p>
-        </div>
+        <article class="card-info">
+          <h3>Insumos Biológicos</h3>
+          <p>Inoculantes e biofungicidas que fortalecem o solo, fixam nitrogênio e reduzem custos com defensivos químicos.</p>
+        </article>
 
-        <div class="card">
-          <span class="badge">Insumo Biológico</span>
-          <h2>BioDefensivo Trichoderma</h2>
-          <p>Controle biológico eficiente contra fungos de solo.</p>
-          <p class="preco">R$ 85,00 / kg</p>
-        </div>
+        <article class="card-info">
+          <h3>Consultoria Especializada</h3>
+          <p>Acompanhamento técnico personalizado de acordo com o tipo de cultura da sua propriedade.</p>
+        </article>
       </div>
 
-      <button class="btn-next" id="nextBtn">&#10095;</button>
-    </div>
-
-    <div class="centro-botao">
-      <a href="./pages/landing/landing.html" class="btn-cta primario">Ir para a Loja Completa</a>
+      <div class="centro-botao">
+        <a href="./pages/landing/landing.html" class="btn-cta primario">Acessar Catálogo de Produtos</a>
+      </div>
     </div>
   </section>
 
@@ -73,36 +60,5 @@
       <a href="./pages/login/login.html" class="btn-cta primario">Acessar Área do Cliente</a>
     </div>
   </section>
-
-  <script>
-    const track = document.getElementById('track');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    let currentIndex = 0;
-    const totalCards = document.querySelectorAll('.card').length;
-
-    function updateCarousel() {
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < totalCards - 1) {
-        currentIndex++;
-      } else {
-        currentIndex = 0;
-      }
-      updateCarousel();
-    });
-
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-      } else {
-        currentIndex = totalCards - 1; 
-      }
-      updateCarousel();
-    });
-  </script>
 </body>
 </html>

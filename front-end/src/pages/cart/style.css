@@ -189,7 +189,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Seção de Endereço */
 .card-endereco {
     background-color: var(--white);
     padding: 22px 24px;
@@ -223,7 +222,6 @@ body {
     min-height: 16px;
 }
 
-/* Resumo lateral */
 .resumo-pedido {
     background-color: var(--white);
     padding: 24px;

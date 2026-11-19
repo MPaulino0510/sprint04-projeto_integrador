@@ -1,24 +1,92 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f7f4;
+:root {
+  --white: #e8f5e9;
+  --dark-green: #2e4d2e;
+  --light-green: #4caf50;
+  --middle-green: #388e3c;
+  --pure-white: #ffffff;
+  --bg-light: #f4f7f4;
+  --forest-green: #2e7d32;
+  --deep-green: #1b5e20;
+  --shadow-green: rgba(46, 77, 46, 0.15);
+  --shadow-green-hover: rgba(46, 77, 46, 0.25);
+}
+
+* {
   margin: 0;
-  padding: 20px;
-  color: #2e4d2e;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  color: var(--dark-green);
+  padding: 24px 20px;
+}
+
+@keyframes aparecerSuave {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 header {
   text-align: center;
   margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: var(--dark-green);
+}
+
+.topo-links {
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.btn-carrinho-topo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--forest-green);
+  color: var(--pure-white);
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-carrinho-topo:hover {
+  background-color: var(--deep-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px var(--shadow-green-hover);
 }
 
 .carousel-container {
   position: relative;
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
   overflow: hidden;
-  border: 2px solid #4caf50;
-  border-radius: 8px;
-  background: #fff;
+  border: 2px solid var(--light-green);
+  border-radius: 14px;
+  background-color: var(--pure-white);
+  box-shadow: 0 10px 25px var(--shadow-green);
 }
 
 .carousel-track {
@@ -27,134 +95,111 @@ header {
 
 .card {
   display: none;
-  box-sizing: border-box;
-  padding: 30px 50px;
+  padding: 32px 56px;
   text-align: center;
 }
 
 .card.ativa {
-  display: block;
-  animation: aparecerSuave 0.4s ease-in-out;
-}
-
-@keyframes aparecerSuave {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: aparecerSuave 0.4s ease-out forwards;
 }
 
 .badge {
   display: inline-block;
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 0.85em;
-  font-weight: bold;
+  background-color: var(--white);
+  color: var(--forest-green);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-.preco {
-  font-size: 1.4em;
-  color: #1b5e20;
-  font-weight: bold;
-}
-
-.btn-prev, .btn-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #4caf50;
-  color: white;
-  border: none;
-  font-size: 18px;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 4px;
-  z-index: 10;
-}
-
-.btn-prev { left: 10px; }
-.btn-next { right: 10px; }
-
-.btn-prev:hover, .btn-next:hover {
-  background: #388e3c;
-}
-
-.topo-links {
-  display: flex;
-  justify-content: flex-end;
-  max-width: 600px;
-  margin: 0 auto 10px auto;
-}
-
-.btn-carrinho-topo {
-  background-color: #2e7d32;
-  color: white;
-  text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 0.9em;
-  transition: background-color 0.5s;
-}
-
-.btn-carrinho-topo:hover {
-  background-color: #1b5e20;
-}
-
-.btn-add {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 10px;
-  border-radius: 4px;
-  font-size: 1em;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.5s, transform 0.8s;
-}
-
-.btn-add:hover {
-  background-color: #388e3c;
-  transform: translateY(-2px);
-}
-
-.produto{
+.produto {
   display: block;
   width: 100%;
-  max-width: 360px;      
-  height: 504px;          
-  object-fit: cover;      
-  margin: 15px auto;     
-  border-radius: 6px;
-  border: none;
+  max-width: 360px;
+  height: 504px;
+  object-fit: cover;
+  margin: 8px auto;
+  border-radius: 8px;
   transition: transform 0.3s ease;
 }
 
 .produto:hover {
-  transform: scale(1.04); 
+  transform: scale(1.04);
+}
+
+.preco {
+  font-size: 1.4rem;
+  color: var(--deep-green);
+  font-weight: 700;
+}
+
+.btn-prev,
+.btn-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--light-green);
+  color: var(--pure-white);
+  border: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 10;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-prev {
+  left: 12px;
+}
+
+.btn-next {
+  right: 12px;
+}
+
+.btn-prev:hover,
+.btn-next:hover {
+  background-color: var(--middle-green);
+  transform: translateY(-50%) scale(1.05);
 }
 
 .btn-add {
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--light-green);
+  color: var(--pure-white);
   border: none;
-  padding: 10px 20px;
-  margin-top: 10px;
-  border-radius: 4px;
-  font-size: 1em;
-  font-weight: bold;
+  padding: 12px 24px;
+  margin-top: 8px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .btn-add:hover {
-  background-color: #388e3c;
-  transform: translateY(-2px);
+  background-color: var(--middle-green);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px var(--shadow-green-hover);
+}
+
+.btn-add:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 24px 42px;
+  }
+
+  .produto {
+    height: 360px;
+  }
 }

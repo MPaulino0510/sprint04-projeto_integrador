@@ -6,6 +6,7 @@
   --shadow: rgba(0, 0, 0, 0.25);
   --dark-green2: rgba(46, 77, 46, 0.3);
   --dark-green3: rgba(28, 52, 28, 0.7);
+  --danger-red: rgb(194, 44, 74);
 }
 
 * {
@@ -225,7 +226,8 @@ body {
     font-size: 2.1rem;
   }
 }
-#btn-sair:hover{
-  background-color: rgb(194, 44, 74);
-  color:#e8f5e9
+
+#btn-sair:hover {
+  background-color: var(--danger-red);
+  color: var(--white);
 }

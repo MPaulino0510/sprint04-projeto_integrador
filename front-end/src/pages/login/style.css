@@ -1,9 +1,19 @@
+:root {
+  --white: #e8f5e9;
+  --dark-green: #2e4d2e;
+  --light-green: #4caf50;
+  --middle-green: #388e3c;
+  --deep-green: #1b5e20;
+  --border-light-green: #a5d6a7;
+  --shadow-green: rgba(46, 77, 46, 0.08);
+}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f7f4;
+  background-color: var(--white);
   margin: 0;
   padding: 20px;
-  color: #2e4d2e;
+  color: var(--dark-green);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,19 +24,19 @@ body {
 
 h2 {
   text-align: center;
-  color: #1b5e20;
+  color: var(--deep-green);
   margin-bottom: 20px;
 }
 
 #form-login {
   width: 100%;
   max-width: 400px;
-  background: #ffffff;
-  border: 2px solid #4caf50;
+  background: var(--white);
+  border: 2px solid var(--light-green);
   border-radius: 8px;
   padding: 30px;
   box-sizing: border-box;
-  box-shadow: 0 4px 10px rgba(46, 77, 46, 0.08);
+  box-shadow: 0 4px 10px var(--shadow-green);
 }
 
 #form-login div {
@@ -39,29 +49,29 @@ label {
   font-weight: bold;
   margin-bottom: 6px;
   font-size: 0.95em;
-  color: #2e4d2e;
+  color: var(--dark-green);
 }
 
 input {
   padding: 10px 12px;
-  border: 1px solid #a5d6a7;
+  border: 1px solid var(--border-light-green);
   border-radius: 4px;
   font-size: 1em;
-  color: #2e4d2e;
-  background-color: #f9fbf9;
+  color: var(--dark-green);
+  background-color: var(--white);
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 input:focus {
   outline: none;
-  border-color: #4caf50;
-  background-color: #ffffff;
+  border-color: var(--light-green);
+  background-color: var(--white);
 }
 
 button[type="submit"] {
   width: 100%;
-  background-color: #4caf50;
-  color: #ffffff;
+  background-color: var(--light-green);
+  color: var(--white);
   border: none;
   font-size: 1em;
   font-weight: bold;
@@ -73,8 +83,9 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #388e3c;
+  background-color: var(--middle-green);
 }
+
 .link-cadastro {
   text-align: center;
   margin-top: 16px;
@@ -82,7 +93,7 @@ button[type="submit"]:hover {
 }
 
 .link-cadastro a {
-  color: #1b5e20;
+  color: var(--deep-green);
   font-weight: bold;
   text-decoration: none;
 }
@@ -115,7 +126,7 @@ button[type="submit"]:hover {
   padding: 4px;
   background: transparent;
   border: none;
-  color: var(--dark-green, #2e4d2e);
+  color: var(--dark-green);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,7 +135,7 @@ button[type="submit"]:hover {
 }
 
 .btn-olho:hover {
-  color: var(--light-green, #4caf50);
+  color: var(--light-green);
   background: transparent;
   box-shadow: none;
   transform: translateY(-50%) scale(1.1);

@@ -217,7 +217,7 @@ btnFinalizar.addEventListener("click", async () => {
 
         mensagem.textContent = "Compra realizada com sucesso! Redirecionando...";
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "../../index.html";
         }, 1800);
     } catch (erro) {
         mensagem.textContent = erro.message;

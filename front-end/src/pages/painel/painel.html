@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Painel do Cliente - AgriTech</title>
+  <link rel="stylesheet" href="painel.css">
+  <script src="painel.js" defer></script>
 </head>
+
 <body>
 
   <h2>Bem-vindo ao Painel AgriTech</h2>
@@ -20,13 +24,22 @@
 
     <div>
       <label for="nova-senha">Nova Senha:</label>
-      <input type="password" id="nova-senha" required>
+      <div class="input-senha-wrapper">
+        <input type="password" id="nova-senha" required>
+        <button type="button" id="btnToggleSenha" class="btn-olho" aria-label="Mostrar ou ocultar senha">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <button type="submit">Salvar Alterações</button>
   </form>
 
-  <script src="painel.js"></script>
-  <link rel="stylesheet" href="painel.css">
+
 </body>
+
 </html>

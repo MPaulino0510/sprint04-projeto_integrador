@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,52 @@
         </header>
 
         <section class="conteudo-carrinho">
-            <div id="listaItens" class="lista-itens"></div>
+            <div class="coluna-principal">
+                <div id="listaItens" class="lista-itens"></div>
+
+                <section class="card-endereco" aria-labelledby="titulo-endereco">
+                    <h2 id="titulo-endereco">Endereço de Entrega</h2>
+
+                    <div class="grid-endereco">
+                        <div class="campo">
+                            <label for="cep">CEP *</label>
+                            <input type="text" id="cep" maxlength="9" placeholder="00000-000" required>
+                            <small id="statusCep" class="status-cep"></small>
+                        </div>
+
+                        <div class="campo">
+                            <label for="estado">Estado (UF) *</label>
+                            <input type="text" id="estado" maxlength="2" placeholder="Ex: SP" required>
+                        </div>
+
+                        <div class="campo col-span-2">
+                            <label for="logradouro">Logradouro (Rua / Avenida / Estrada) *</label>
+                            <input type="text" id="logradouro" maxlength="150" placeholder="Ex: Rua das Flores" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="numero">Número *</label>
+                            <input type="number" id="numero" min="1" placeholder="Ex: 123" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="complemento">Complemento (Opcional)</label>
+                            <input type="text" id="complemento" maxlength="50" placeholder="Ex: Sítio Boa Vista, Galpão 2">
+                        </div>
+
+                        <div class="campo">
+                            <label for="bairro">Bairro *</label>
+                            <input type="text" id="bairro" maxlength="100" placeholder="Ex: Zona Rural" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="cidade">Cidade *</label>
+                            <input type="text" id="cidade" maxlength="50" placeholder="Ex: Ribeirão Preto" required>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
             <aside class="resumo-pedido">
                 <h2>Resumo do Pedido</h2>
 
@@ -37,11 +82,13 @@
                         <option value="Boleto Bancário">Boleto Bancário</option>
                     </select>
                 </div>
+
                 <button type="button" id="btnFinalizar" class="botao-principal">
                     Finalizar compra
                 </button>
             </aside>
         </section>
+
         <p id="mensagem" role="status"></p>
     </main>
 </body>
